@@ -1,2 +1,1 @@
-# red-teaming-ai
-A repository for the most advanced red teaming AI system for LLMs
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
