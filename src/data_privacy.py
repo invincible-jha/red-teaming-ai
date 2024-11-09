@@ -39,6 +39,18 @@ def secure_data_storage(data, storage_path):
     data.to_csv(storage_path, index=False)
     print(f"Data securely stored at {storage_path}")
 
+def audit_logging(data_access_log, action, user):
+    """
+    Implements audit logging for data access and red teaming activities.
+    """
+    log_entry = {
+        'action': action,
+        'user': user,
+        'timestamp': pd.Timestamp.now()
+    }
+    data_access_log = data_access_log.append(log_entry, ignore_index=True)
+    return data_access_log
+
 # Example usage
 if __name__ == "__main__":
     # Sample data
@@ -68,3 +80,9 @@ if __name__ == "__main__":
     # Secure data storage
     storage_path = 'secure_data.csv'
     secure_data_storage(encrypted_data, storage_path)
+
+    # Audit logging
+    data_access_log = pd.DataFrame(columns=['action', 'user', 'timestamp'])
+    data_access_log = audit_logging(data_access_log, 'access', 'admin')
+    print("Data Access Log:")
+    print(data_access_log)

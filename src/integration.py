@@ -50,6 +50,17 @@ class PluginArchitecture:
         else:
             raise ValueError(f"Plugin {name} not found")
 
+class DataFormatStandardization:
+    @staticmethod
+    def standardize_input(input_data):
+        # Implement input data format standardization
+        return input_data
+
+    @staticmethod
+    def standardize_output(output_data):
+        # Implement output data format standardization
+        return output_data
+
 # Example usage
 if __name__ == "__main__":
     api_url = "https://api.example.com/llm"
@@ -60,5 +71,7 @@ if __name__ == "__main__":
     plugin_architecture.register_plugin("example_model", model_wrapper)
 
     input_text = "Hello, world!"
-    output = plugin_architecture.use_plugin("example_model", input_text)
-    print(output)
+    standardized_input = DataFormatStandardization.standardize_input(input_text)
+    output = plugin_architecture.use_plugin("example_model", standardized_input)
+    standardized_output = DataFormatStandardization.standardize_output(output)
+    print(standardized_output)
